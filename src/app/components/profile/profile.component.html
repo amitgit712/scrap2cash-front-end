@@ -1,0 +1,334 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#fff" type="ball-climbing-dot" [fullScreen]="true">
+    <p style="color: white"> Loading...
+
+    </p>
+</ngx-spinner>
+
+
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-3 page-sidebar">
+                <aside>
+                    <div class="inner-box">
+                        <div class="user-panel-sidebar">
+                            <div class="collapse-box">
+                                <h5 class="collapse-title no-border"> My Classified <a href="#MyClassified"
+                                        aria-expanded="true" data-toggle="collapse" class="pull-right"><i
+                                            class="fa fa-angle-down"></i></a></h5>
+
+                                <div class="panel-collapse collapse show" id="MyClassified">
+                                    <ul class="acc-list">
+                                        <li>
+                                            <a class="active" routerLink="/profile"><i class="icon-home"></i>
+                                                Personal Home </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /.collapse-box  -->
+                            <div class="collapse-box">
+                                <h5 class="collapse-title"> My Ads <a href="#MyAds" aria-expanded="true"
+                                        data-toggle="collapse" class="pull-right"><i class="fa fa-angle-down"></i></a>
+                                </h5>
+
+                                <div class="panel-collapse collapse show" id="MyAds">
+                                    <ul class="acc-list">
+
+
+                                        <li><a routerLink="/my_ads"><i class="icon-docs"></i> My ads <span
+                                                    class="badge"></span> </a></li>
+
+
+                                        <li><a routerLink="/approoved_ads"><i class="icon-hourglass"></i> Approved Ads
+                                                <span class="badge"></span>
+                                            </a></li>
+
+
+                                        <li><a routerLink="/unapprooved_ads"><i class="icon-hourglass"></i> Pending
+                                                approval <span class="badge"></span>
+                                            </a></li>
+
+                                      
+                                    </ul>
+                                </div>
+                            </div>
+                       
+                        </div>
+                    </div>
+                    <!-- /.inner-box  -->
+
+                </aside>
+            </div>
+            <!--/.page-sidebar-->
+
+            <div class="col-md-9 page-content">
+                <div class="inner-box">
+                    <div class="row">
+                        <div class="col-md-5 col-xs-4 col-xxs-12">
+                      
+                        </div>
+
+                        <div class="col-md-7 col-xs-8 col-xxs-12">
+                            <div class="header-data text-center-xs">
+
+                               
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="inner-box">
+                    <span *ngIf="susscess" class="text-success text-center"> {{ susscess.success }} </span>
+
+                    <span *ngIf="error" class="text-danger text-center"> Something went wrong please check the fields
+                    </span>
+                    <div id="accordion" class="panel-group">
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h4 class="card-title"><a href="#collapseB1" aria-expanded="true" data-toggle="collapse"
+                                        class="anchor-text"> Account
+                                        details </a></h4>
+                            </div>
+                            <div class="panel-collapse collapse " id="collapseB1">
+                                <div class="card-body">
+                                    <ul *ngFor="let item of user_data">
+                                        <li> Name : {{ item.first_name | titlecase }}&nbsp;
+                                            {{ item.last_name | titlecase }}</li>
+                                        <li> Email : {{ item.email }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="card card-default">
+                                <div class="card-header">
+
+                                    <span *ngIf="!profile_status; else elseBlock" class="text-danger">
+
+                                        <h4 class="card-title"><a href="#collapseB3" aria-expanded="true"
+                                                data-toggle="collapse" class="anchor-text text-danger"> Complete your
+                                                profile</a></h4>
+
+                                    </span>
+
+                                    <ng-template #elseBlock>
+                                        <h4 class="card-title"><a href="#collapseB3" aria-expanded="true"
+                                                data-toggle="collapse" class="anchor-text"> Profile details</a></h4>
+                                    </ng-template>
+
+                                </div>
+
+                                <div class="panel-collapse collapse " id="collapseB3">
+                                    <div class="card-body">
+                                        <form [formGroup]="profileForm" (ngSubmit)="onUpdate()">
+
+
+                                            <div class="form-group">
+                                                <label for="Phone" class="col-sm-3 control-label">Bussiness
+                                                    Type</label>
+                                                <div class="col-sm-9">
+                                                    <select (change)="getCategory($event.target.value)"
+                                                        formControlName="bussiness_category" name="bussiness_category"
+                                                        class="form-control" required>
+                                                        <option value="" disabled>Select bussiness type</option>
+                                                        <option *ngFor="let item of bussiness_type" [value]="item.id">
+                                                            {{ item.category_type | titlecase }}
+                                                        </option>
+                                                        
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label for="Phone" class="col-sm-3 control-label"> Category</label>
+                                                <div class="col-sm-9">
+                                                    <select (change)="getSubcategory($event.target.value)"
+                                                        formControlName="category_s" name="category_s"
+                                                        class="form-control" required>
+                                                        <option value="" selected>Select category</option>
+                                                        <option  *ngFor="let category of category_name"
+                                                            [value]="category.id">
+                                                            {{ category.category | titlecase }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label for="Phone" class="col-sm-3 control-label">Subategory</label>
+                                                <div class="col-sm-9">
+                                                    <select formControlName="subcategory_s" name="subcategory_s"
+                                                        class="form-control" required>
+                                                        <option value="" disabled>Select subcategory</option>
+                                                        <option *ngFor="let subcategory of subcategory_name"
+                                                            [value]="subcategory.id">
+                                                            {{ subcategory.subcategory | titlecase }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="Phone" class="col-sm-3 control-label">Phone</label>
+                                                <div class="col-sm-9">
+                                                    <input formControlName="user_conatct" type="text"
+                                                        class="form-control" name="user_conatct" id="Phone">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Country</label>
+
+                                                <div class="col-sm-9">
+                                                    <input formControlName="country" type="text" name="country"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">State</label>
+
+                                                <div class="col-sm-9">
+                                                    <input formControlName="state" type="text" name="state"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">City</label>
+
+                                                <div class="col-sm-9">
+                                                    <input formControlName="city" type="text" name="city"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Postal Code</label>
+
+                                                <div class="col-sm-9">
+                                                    <input formControlName="zip_code" type="text" name="zip_code"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Detail Address</label>
+
+                                                <div class="col-sm-9">
+                                                    <input formControlName="detail_address" type="text"
+                                                        name="detail_address" class="form-control">
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-3 col-sm-9"></div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-3 col-sm-9">
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h4 class="card-title"><a href="#collapseB2" class="anchor-text"
+                                            aria-expanded="true" data-toggle="collapse"> Settings </a>
+                                    </h4>
+                                </div>
+
+
+
+                                <div class="panel-collapse collapse" id="collapseB2">
+                                    <div class="card-body">
+
+                                        <form [formGroup]="updatePasswordForm" (ngSubmit)="onPasswordUpdate()"
+                                            class="form-horizontal" role="form">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">New Password</label>
+
+                                                <div class="col-sm-9">
+                                                    <input formControlName="password" type="password" name="password"
+                                                        class="form-control" placeholder="">
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Confirm Password</label>
+
+                                                <div class="col-sm-9">
+                                                    <input formControlName="confirm_password" type="password"
+                                                        class="form-control" placeholder="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-3 col-sm-9">
+                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                        <!--/.row-box End-->
+
+
+                    </div>
+                </div>
+                <!--/.page-content-->
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+    </div>
+    <!-- /.main-container -->

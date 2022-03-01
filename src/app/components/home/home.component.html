@@ -1,0 +1,177 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#fff" type="ball-climbing-dot" [fullScreen]="true">
+    <p style="color: white"> Loading...
+
+    </p>
+</ngx-spinner>
+
+<div class="container-fluid" *ngIf="AllScrapData !='' ">
+    <div class="col-md-3 card bg-light shadow float-right p-2 mb-2 mt-3">
+        <h3>Todays Price</h3>
+        <div class="row p-2" *ngFor="let scrap of AllScrapData" >
+        <div class="col-md-6">
+        <h4><b>{{scrap.name}}</b></h4>
+        </div>
+        <div class="col-md-6">
+            <h4>₹{{scrap.price}}</h4>
+        </div>
+    </div>    
+    </div>
+
+</div>
+
+<div class="col-xl-12 content-box ">
+    <div class="row row-featured row-featured-category">
+        <div class="col-xl-12  box-title no-border">
+            <div class="inner">
+                <h2><span>Recently</span>
+                    Added<a routerLink="/all_posts" class="sell-your-item"> View more <i class="  icon-th-list"></i>
+                    </a></h2>
+            </div>
+        </div>
+
+        <!--|slice:0:14 -->
+        <div *ngFor="let item of recently_added | slice: 0:12; index as i"
+            class="col-xl-2 col-md-3 col-sm-3 col-xs-4 f-category">
+
+            <a routerLink="." (click)="getPost(item)"><img *ngFor="let i of item.image | slice:0:1"
+                    src="{{ item.image_prefix }}{{ i.images }}" class="img-responsive" alt="img">
+                <h6>{{ item.product_brand_name | titlecase }}</h6>
+
+                <h6>₹ {{ item.selling_price | titlecase }}</h6>
+
+            </a>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+<div style="clear: both"></div>
+
+
+
+<div class="col-xl-12 content-box ">
+    <div class="row row-featured row-featured-category">
+        <div class="col-xl-12  box-title no-border">
+            <div class="inner">
+                <h2><span>Browse by</span>
+                    Category <a routerLink="/all_posts" class="sell-your-item"> View more <i class="  icon-th-list"></i>
+                    </a></h2>
+            </div>
+        </div>
+
+
+        <div *ngFor="let item of category" class="col-xl-2 col-md-3 col-sm-3 col-xs-4 f-category">
+            <a routerLink="." (click)="getCategoryData(item);"><img src="{{ item.image }}" class="img-responsive"
+                    alt="img">
+                <h6>{{ item.category_name | titlecase }}</h6>
+            </a>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+<div style="clear: both"></div>
+
+
+
+<div class="page-info hasOverly" style="background: url(assets/images/bg.jpg); background-size:cover">
+    <div class="bg-overly">
+        <div class="container text-center section-promo">
+            <div class="row">
+                <div class="col-sm-3 col-xs-6 col-xxs-12">
+                    <div class="iconbox-wrap">
+                        <div class="iconbox">
+                            <div class="iconbox-wrap-icon">
+                                <i class="icon  icon-group"></i>
+                            </div>
+                            <div class="iconbox-wrap-content">
+                                <h5><span>2200</span></h5>
+
+                                <div class="iconbox-wrap-text">Trusted Seller</div>
+                            </div>
+                        </div>
+                        <!-- /..iconbox -->
+                    </div>
+                    <!--/.iconbox-wrap-->
+                </div>
+
+                <div class="col-sm-3 col-xs-6 col-xxs-12">
+                    <div class="iconbox-wrap">
+                        <div class="iconbox">
+                            <div class="iconbox-wrap-icon">
+                                <i class="icon  icon-th-large-1"></i>
+                            </div>
+                            <div class="iconbox-wrap-content">
+                                <h5><span>100</span></h5>
+
+                                <div class="iconbox-wrap-text">Categories</div>
+                            </div>
+                        </div>
+                        <!-- /..iconbox -->
+                    </div>
+                    <!--/.iconbox-wrap-->
+                </div>
+
+                <div class="col-sm-3 col-xs-6  col-xxs-12">
+                    <div class="iconbox-wrap">
+                        <div class="iconbox">
+                            <div class="iconbox-wrap-icon">
+                                <i class="icon  icon-map"></i>
+                            </div>
+                            <div class="iconbox-wrap-content">
+                                <h5><span>700</span></h5>
+
+                                <div class="iconbox-wrap-text">Location</div>
+                            </div>
+                        </div>
+                        <!-- /..iconbox -->
+                    </div>
+                    <!--/.iconbox-wrap-->
+                </div>
+
+                <div class="col-sm-3 col-xs-6 col-xxs-12">
+                    <div class="iconbox-wrap">
+                        <div class="iconbox">
+                            <div class="iconbox-wrap-icon">
+                                <i class="icon icon-facebook"></i>
+                            </div>
+                            <div class="iconbox-wrap-content">
+                                <h5><span>50,000</span></h5>
+
+                                <div class="iconbox-wrap-text"> Facebook Fans</div>
+                            </div>
+                        </div>
+                        <!-- /..iconbox -->
+                    </div>
+                    <!--/.iconbox-wrap-->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /.page-info -->
+
+
+<div class="page-bottom-info">
+    <div class="page-bottom-info-inner">
+        <div class="page-bottom-info-content text-center">
+
+
+            <h1>If you have any questions, comments or concerns, please call the Classified Advertising department
+                at +91 9422492743</h1>
+            <a class="btn  btn-lg btn-primary-dark" href="tel:+000000000">
+                <i class="icon-mobile"></i> <span class="hide-xs color50">Call Now:</span> +91 7507398717 </a>
+        </div>
+
+    </div>
+</div>

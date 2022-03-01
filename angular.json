@@ -1,0 +1,156 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "466087ef-17cb-44d3-a28f-fcc9f0d30f09"
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "scrap2cashui": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/scrap2cashui",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+              "src/assets/assets/bootstrap/css/bootstrap.css",
+              "src/assets/assets/css/style.css",
+              "src/assets/assets/plugins/owl-carousel/owl.carousel.css",
+              "src/assets/assets/plugins/owl-carousel/owl.theme.css",
+              "src/assets/assets/plugins/bxslider/jquery.bxslider.css",
+
+              "src/assets/assets/css/animate.min.css",
+              "src/assets/assets/plugins/fontawesome-5.2.0/css/all.css",
+              "src/assets/assets/plugins/bootstrap-daterangepicker/daterangepicker.css",
+              "src/assets/assets/css/fontello.css",
+              "src/assets/assets/plugins/jquery-nice-select/css/nice-select.css",
+              "src/assets/assets/css/fileinput.min.css",
+              "src/assets/assets/plugins/flag-icon-css-master/css/flag-icon.css",
+
+            ],
+            "scripts": [
+              "src/assets/assets/js/pace.min.js",
+              "src/assets/assets/plugins/modernizr/modernizr-custom.js",
+              "src/assets/assets/js/jquery/jquery-3.3.1.min.js",
+              "src/assets/assets/bootstrap/js/bootstrap.bundle.js",
+              "src/assets/assets/js/main.min.js",
+
+              "src/assets/assets/plugins/autocomplete/jquery.mockjax.js",
+              "src/assets/assets/plugins/autocomplete/jquery.autocomplete.js",
+              "src/assets/assets/plugins/autocomplete/usastates.js",
+              "src/assets/assets/plugins/autocomplete/autocomplete-demo.js",
+              // "src/assets/assets/js/fileinput.min.js",
+              "src/assets/assets/js/vendors.min.js",
+              
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "scrap2cashui:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "scrap2cashui:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "scrap2cashui:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "scrap2cashui:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "scrap2cashui:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "scrap2cashui"
+}
+

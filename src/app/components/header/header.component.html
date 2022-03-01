@@ -1,0 +1,77 @@
+ <div class="header">
+        <nav class="navbar  fixed-top navbar-site navbar-light bg-light navbar-expand-md"
+             role="navigation">
+            <div class="container">
+
+            <div class="navbar-identity">
+
+
+                <a routerLink="/home"  class="navbar-brand logo logo-title">
+                  <img src="assets/Scrap2CashLogo.svg" style="height:40px;"><br>  
+                <!-- <span class="logo-icon" id="crap">SCRAP<b>2</b>CASH </span> --> </a>
+
+
+                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggler pull-right"
+                        type="button">
+
+                    <svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+
+
+                </button>
+
+            </div> 
+
+
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav ml-auto navbar-right">
+                       
+                       <li class="nav-item"><a routerLink="/home" class="nav-link"><i class="icon-home"></i> Home</a></li>
+
+                        <li class="nav-item"><a  *ngIf="!_authService.loggedIn()" routerLink="/login" class="nav-link"><i class=" icon-logout "></i> Login/Register </a>
+                        </li>
+                    <li class="nav-item"><a  *ngIf="_authService.loggedIn()"  class="nav-link" (click)="_authService.logoutUser()"><i class=" icon-logout "></i> Logout </a>
+                        </li>
+
+                        <li class="dropdown no-arrow nav-item"><a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+
+                            <span *ngIf="_authService.loggedIn()">{{ userName| titlecase }}</span>
+                             <i *ngIf="_authService.loggedIn()" class="icon-user fa"></i> <i *ngIf="_authService.loggedIn()" class=" icon-down-open-big fa"></i></a>
+                    
+ 
+                            <ul *ngIf="_authService.loggedIn()"
+                                    class="dropdown-menu user-menu dropdown-menu-right">
+                                <li class="active dropdown-item"><a routerLink="/profile"><i class="icon-home"></i> Personal Home
+
+                                </a>
+                                </li>
+                                <li class="dropdown-item"><a routerLink="/my_ads"><i class="icon-th-thumb"></i> My ads </a>
+                                </li>
+                                
+                                <li class="dropdown-item"><a routerLink="/approoved_ads"><i class="icon-th-thumb"></i>Approoved Ads </a>
+                                </li>
+                                
+
+                                <li class="dropdown-item"><a routerLink="/unapprooved_ads"><i class="icon-hourglass"></i> Pending
+
+                                    approval </a>
+                                </li>
+                                
+                                <li class="dropdown-item" ><a  href="#" (click)="_authService.logoutUser()"><i class=" icon-logout "></i> Log out </a>
+                                </li>
+                            </ul>
+                        </li>
+            <li class="postadd nav-item">
+            <a  class="btn btn-block   btn-border btn-post btn-danger nav-link" routerLink="/create_post">
+            Post Free Add</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </div>
+    <!-- /.header -->
+

@@ -1,0 +1,10 @@
+
+#mbs{
+    margin-left: unset;
+}
+@media only screen and (max-width: 946px) {
+#mbs{
+    margin-left: 40%;
+    margin-top: 2%;
+}
+}

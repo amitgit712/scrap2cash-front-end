@@ -1,0 +1,47 @@
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#fff" type = "ball-climbing-dot" [fullScreen] = "true">
+  <p style="color: white" > Uploading Images... 
+
+  </p></ngx-spinner>
+
+<div class="container">
+
+	<br><br><br>
+
+<div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+
+<div class="text-center">
+	<i class="fa fa-cloud cloud"></i><p class="text-data">Click here to upload Images</p>
+	<p>You can't upload more then 5 images </p>
+</div>
+<input hidden type="file" #fileInput (change)="uploadFile($event)" multiple>
+
+</div>
+
+<div  class="files-list" *ngFor="let file of url;let i= index">
+    
+    <p >
+
+     {{ file.name }} 
+
+ </p>
+
+
+ </div>
+
+
+<div class="text-center">
+     <button class="btn btn-info" (click)="upload()">
+      Uplod
+  
+    </button>
+
+<div class="text-center">
+     <button class="btn btn-info" (click)="skip()">
+      Skip
+  
+    </button>
+
+</div>
+
+</div>

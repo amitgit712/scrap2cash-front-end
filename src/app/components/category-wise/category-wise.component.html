@@ -1,0 +1,152 @@
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#fff" type = "ball-climbing-dot" [fullScreen] = "true">
+  <p style="color: white" > Loading... 
+
+  </p></ngx-spinner>
+
+<div class="main-container">
+<div class="container">
+    <div class="row">
+        <!-- this (.mobile-filter-sidebar) part will be position fixed in mobile version -->
+        
+        <!--/.page-side-bar-->
+        <div class="col-md-12 page-content col-thin-left">
+
+            <div class="category-list has-grid-view make-grid">
+
+                <div class="tab-box ">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs add-tabs tablist" role="tablist">
+                        <li class="active nav-item">
+                            <a href="#alladslist" role="tab" data-toggle="tab" class="nav-link active">All Ads <span class="badge badge-pill badge-secondary">228,705</span></a>
+                        </li>
+                        <li class=" nav-item">
+                            <a href="#businessads" role="tab" data-toggle="tab" class="nav-link"> Industries <span class="badge badge-pill badge-secondary">50,300</span></a>
+                        </li>
+                    </ul>
+                    <div class="tab-filter">
+                        <select title="sort by" class="selectpicker select-sort-by" data-style="btn-select"
+                                data-width="auto">
+                            <option>Sort by</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                    </div>
+
+                </div>
+                <!--/.tab-box-->
+
+                <div class="listing-filter">
+                    <div class="pull-left col-xs-6">
+                        
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <!--/.listing-filter-->
+
+                <!-- Mobile Filter bar-->
+                <div class="mobile-filter-bar col-xl-12  ">
+                    <ul class="list-unstyled list-inline no-margin no-padding">
+                        <li class="filter-toggle">
+                            <a class="">
+                                <i class="  icon-th-list"></i>
+                                Filters
+                            </a>
+                        </li>
+                        <li>
+
+
+                            <div class="dropdown"> <a data-toggle="dropdown" class="dropdown-toggle"> Short
+
+                                by </a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item"><a href="#" rel="nofollow">Relevance</a>
+                                    </li>
+                                    <li class="dropdown-item"><a href="#" rel="nofollow">Date</a>
+                                    </li>
+                                    <li class="dropdown-item"><a href="#" rel="nofollow">Company</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="menu-overly-mask"></div>
+                <!-- Mobile Filter bar End-->
+
+
+
+<div class="tab-content">
+<div class="tab-pane  active " id="alladslist">
+<div class="adds-wrapper row no-margin">
+
+
+<div *ngFor="let item of cat_wise" class="item-list">
+
+<div class="row">
+    <div class="col-md-2 no-padding photobox">
+        <div class="add-image">
+            <!-- <span class="photo-count"><i class="fa fa-camera"></i> 2 </span>  --> 
+<a routerLink="." (click)="getDetails(item)" >
+    <img class="thumbnail no-margin" *ngFor="let i of item.image  | slice:0:1" src="{{ item.image_prefix }}{{ i.images }}" style="height:150px;" alt="img"></a>
+        </div>
+    </div>
+    <!--/.photobox-->
+    <div class="col-md-7 add-desc-box">
+        <div class="ads-details">
+            <h5 class="add-title"><a routerLink="." (click)="getDetails(item)">
+
+               {{ item.product_brand_name | titlecase }} </a></h5>
+<span class="info-row"> 
+    <span class="date">
+        <i class=" icon-clock"> </i>
+         {{ item.created_at | date:'yyyy/MM/dd' }}
+     </span> 
+    <br>
+     <span  *ngFor="let j of item.category" class="category text-center">{{ j.category_name | titlecase }} 
+     </span>
+     <br>     
+        <span *ngFor="let lo of item.user_profile"class="item-location"><i class="fa fa-map-marker-alt"></i> {{ lo.state | titlecase }} | {{ lo.city | titlecase }}
+        </span>
+            </span>
+        </div>
+    </div>
+    <!--/.add-desc-box-->
+    <div class="col-md-3 text-center  price-box">
+        <p class="item-price"> ₹ {{ item.selling_price }} </p>
+
+    </div>
+    <!--/.add-desc-box-->
+</div>
+
+</div>
+<!--/.item-list-->
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="post-promo text-center">
+<h2> Do you get anything for sell ? </h2>
+<h5>Sell your products online FOR FREE. It's easier than you think !</h5>
+<a routerLink="/create_post" class="btn btn-lg btn-border btn-post btn-danger">Post a Free Ad </a>
+</div>
+<!--/.post-promo-->
+</div>
+<!--/.page-content-->
+
+</div>
+</div>
+</div>
+<!-- /.main-container -->
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#fff" type = "ball-climbing-dot" [fullScreen] = "true">
+  <p style="color: white" > Loading... 
+
+  </p></ngx-spinner>
+
+<div class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 login-box">
+                    <div class="card card-default">
+                        <div class="panel-intro text-center">
+                            <h2 class="logo-title">
+                                <!-- Original Logo will be placed here  -->
+                                <span class="logo-icon">Scrap</span>2<span>Cash </span>
+                            </h2>
+                        </div>
+
+
+                            <div *ngIf="error"><span class="text-danger"> {{ error }}</span>
+                             </div>
+
+                        <div class="card-body">
+                             <form [formGroup]="otpForm" (ngSubmit)="veryfyOTP();" class="form-horizontal">
+        
+                              
+                                <div class="form-group">
+                                    <label for="sender-email" class="control-label">Enter Otp:</label>
+
+                                    <div class="input-icon"><i class="icon-user fa"></i>
+                                        <input formControlName="otp"   id="sender-email" type="text" placeholder="Enter otp sent on your email"
+                                        class="form-control email" name="otp" required>
+                                    </div>
+                                 </div>
+                               
+                                <div class="form-group">
+
+                                    <input  name="submit"class="btn btn-primary  btn-block" value="Verify"
+                                           type="submit">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+
+                            
+
+                        
+
+                            <div style=" clear:both"></div>
+                        </div>
+                    </div>
+                    <div class="login-box-btm text-center">
+                        <p> Don't have an account? <br>
+                            <a routerLink="/register"><strong>Sign Up !</strong> </a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
